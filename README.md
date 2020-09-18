@@ -33,14 +33,14 @@ kubectl get pod {nombre pos} -o {yaml}{json}
 ```
 
 * Para ver el contenido de lo que corre dentro de nuestro pod lo que hacemos es tomar la ip del pod y pegarla en el navegador web, **ojo esto solo si el cluster es nuestra propia máquina local,** *en el caso contrario toca hacer un* :
-Para el caso en que desde tu local quieras hacer una redirección a tu pod: 
+Para el caso en que desde tu local quieras hacer una re-dirección a tu pod: 
 ```
 kubectl port-forward <pod-name> 7000:<pod-port>
 ```
 
 Luego, solo vas a http://localhost:7000 y deberías ver tu pod!
 
-* Para acceder a los pod cuanto estan ejecutandose:
+* Para acceder a los pod cuanto están ejecutándose:
  ```
  kubectl exec -ti {nombre del pod} -- sh
  ```
@@ -94,12 +94,12 @@ kubectl get pods -l app=backend
 kubectl apply -f replicaset.yaml
 ```
 
-* Los filtros en los replicaset cumplen lo misma filosofia:
+* Los filtros en los replicaSet cumplen lo misma filosofía:
 ```
 kubectl get pods -l app=pod-labels
 ```
 
-* Para listar los replicaset utilizamos los comandos:
+* Para listar los replicaSet utilizamos los comandos:
 ```
 kubectl get rs 
 ```
@@ -108,7 +108,7 @@ kubectl get rs
 kubectl get replicaset
 ```
 
-* Tener presente que los replicaset tambien le podemos obtener sus describer y sus manifiesto: 
+* Tener presente que los replicaSet también le podemos obtener sus descripción y sus manifiesto: 
 ```
 kubectl get rs {nombre_replicaset}-o yaml
 ```
@@ -116,7 +116,7 @@ kubectl get rs {nombre_replicaset}-o yaml
 kubectl describe rs {nombre_rs}
 ```
 
-* Para motrar la lista le labels asociados a un pod tenemos el siguiente comando, adems de informar que la lista de despliegues siempres es con apply:
+* Para mostrar la lista le labels asociados a un pod tenemos el siguiente comando, ademas de informar que la lista de despliegues siempre es con apply:
 
 ```
 kubectl apply -f deployment.yaml
@@ -127,8 +127,8 @@ kubectl apply -f deployment.yaml
  ```
 
 ***SUPER COMANDO***
-* Para concer el estado de un deployment tenemos el siguiente comando:
-Tengamos presente que un rollout es lo nuevo del despligue:
+* Para conocer el estado de un deployment tenemos el siguiente comando:
+Tengamos presente que un rollout es lo nuevo del despliegue:
 ```
 kubectl rollout status deployment {nginx-deployment} 
 ```
@@ -139,16 +139,16 @@ este ultimo es el nombre del deployment.
 kubectl rollout status deployment error-deployment --watch=false
 ```
 
-* Para concer el el historial de deployment realizados por deployment tenemos:
+* Para conocer el el historial de deployment realizados por deployment tenemos:
 ```
 kubectl rollout history deployment {front-deployment} nombre del 
 deploym
 ```
 
-**_Para la creación de archivos de configurtacion y de acceso a los a sus diferentes cluster les dejo el s_**
+**_Para la creación de archivos de configuración y de acceso a los a sus diferentes cluster les dejo el s_**
 [Dentro de este link](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) encontraras un detalle mas completo y oficial.
 
-* Para setear la configuracion que necesitas que rija en el momento que necesites acceder al cluster:
+* Para setear la configuración que necesitas que rija en el momento que necesites acceder al cluster:
 
 ```
 kubectl config --kubeconfig=config-demo set-context dev-frontend --cluster=development --namespace=frontend --user=developer
@@ -158,7 +158,7 @@ Para visualizar el archivo de configuraciones
 ```
 kubectl config --kubeconfig=config-demo view
 ```
-* Para visualizar el contexto actula de k8s:
+* Para visualizar el contexto actual de k8s:
 ```
 kubectl config current-context
 ```
@@ -180,7 +180,7 @@ kubectl get pods --namespace=<insert-namespace-name-here>
 * Para acceder a una lista extensa de comandos tenemos:
 [Link](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#rollout)
 
-#### *Para realizar un roll back a una revision anterior por causa de algun problema*
+#### *Para realizar un roll back a una revision anterior por causa de algún problema*
 ```
 kubectl rollout undo deployment {front-deployment} --to-revision={2}
 ```
