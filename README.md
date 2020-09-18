@@ -176,3 +176,6 @@ kubectl get namespace
 ```
 kubectl get pods --namespace=<insert-namespace-name-here>
 ```
+
+* Para acceder a una lista extensa de comandos tenemos:
+[Link](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#rollout)
