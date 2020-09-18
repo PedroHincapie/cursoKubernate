@@ -1,22 +1,29 @@
 # cursoKubernate
-Este repositorio represente los estudios realizando del curso de k8s
+Este repositorio representa los estudios realizando del curso de k8s.
 
-Para empezar tenemos :
-Listar los pod de un cluster : kubectl get pods
+Dentro del presente encontraremos todos los comandos necesarios para la administración del mismo:
+¿Como listar los pod existentes dentro del cluster?
+kubectl get pods
 
-Crear un pod :  kubectl run --generator=run-pod/v1 podtest --image=nginx:alpine
+¿Cómo se crea un pod?
+kubectl run --generator=run-pod/v1 podtest --image=nginx:alpine
 
-Cuando necesitamos conocer que le paso a un objeto en el tiempo :  kubectl describe pod {nombre del pod}
+Cuando necesitamos conocer qué le paso a un objeto en el tiempo :
+kubectl describe pod {nombre del pod}
 
-Para cdesonocer todos los recursos expuesto por la api de k8s: kubectl api-resources
+Para conocer todos los recursos expuesto por la api de k8s:
+kubectl api-resources
 
-Eliminacion de pod: kubectl delete pod {nombre del pod } {nombre del pod} ...
+Eliminación de pod: 
+kubectl delete pod {nombre del pod } {nombre del pod} ...
 
-Para obtener la declaracion de como fue creado este pod o el manifiesto de como fue creado el pod en k8s: kubectl get pod {nombre pos} -o {yaml}{json}
+Para obtener la declaración de cómo fue creado este pod o el manifiesto 
+kubectl get pod {nombre pos} -o {yaml}{json}
 
-Para ver el contenido de lo que corre dentro de nuestro pod lo que hacemos es tomar la ip del pod y pegarla en el navegador web, ojo esto solo si el cluster es nuestra propia maquina local, en el caso contrarrio toca hacer un :
-Para el caso en que desde tu local quieras hacer una redireccion a tu pod: 
+Para ver el contenido de lo que corre dentro de nuestro pod lo que hacemos es tomar la ip del pod y pegarla en el navegador web, ojo esto solo si el cluster es nuestra propia máquina local, en el caso contrario toca hacer un :
+Para el caso en que desde tu local quieras hacer una redirección a tu pod: 
 kubectl port-forward <pod-name> 7000:<pod-port>
+
 Luego, solo vas a http://localhost:7000 y deberías ver tu pod!
 
 Para acceder a los pod cuanto estan ejecutandose:
@@ -24,19 +31,19 @@ Para acceder a los pod cuanto estan ejecutandose:
 
 
 Para acceder a los log de un pod: kubectl logs {nombre del pod} 
-en el caso que necesitemos hacer seguimiento lo podemos hacer agregandole -f al final
+en el caso que necesitemos hacer seguimiento lo podemos hacer agregando -f al final
 
 Para obtener la lista de versiones de la api de K8s tenemos:
 kubectl api-version
 De esta forma obtenemos la lista
 
-Para la creacion de Pod mediante algun manifiesto, que sera la forma en como se realizara:
+Para la creación de Pod mediante algún manifiesto, que será la forma en como se realizara:
 kubectl apply -f {archivo_pod_yaml}
 
-Para la eliminacion de pod partiendo de un archivo manifiest utilizamos:
+Para la eliminación de pod partiendo de un archivo manifest utilizamos:
 kubectl delete -f {nombre y ruta del archivo yaml}
 
-Recordemos que para la creacion de multiples pod dentro de un mismo yaml, tan solo basta con separar dentro de mismo yaml los descripciones del uno con el otro por medio de "---"
+Recordemos que para la creación de múltiples pod dentro de un mismo yaml, tan solo basta con separar dentro de mismo yaml los descripciones del uno con el otro por medio de "---"
 
 Cuando necesitamos acceder a los logs de contenedores que existen en un pod con mas de un contenedor:
 kubectl logs {nombre-pod} -c {nombre del contenedor}
@@ -87,3 +94,5 @@ Para visualizar el contexto actula de k8s:
 
 Para visualizar el contenido del contexto actual tenemos:
      kubectl config view
+
+
