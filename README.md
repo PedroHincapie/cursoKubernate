@@ -145,6 +145,19 @@ kubectl rollout history deployment {front-deployment} nombre del
 deploym
 ```
 
+**_Para la creación de archivos de configurtacion y de acceso a los a sus diferentes cluster les dejo el s_**
+[Dentro de este link](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) encontraras un detalle mas completo y oficial.
+
+* Para setear la configuracion que necesitas que rija en el momento que necesites acceder al cluster:
+
+```
+kubectl config --kubeconfig=config-demo set-context dev-frontend --cluster=development --namespace=frontend --user=developer
+```
+
+Para visualizar el archivo de configuraciones
+```
+kubectl config --kubeconfig=config-demo view
+```
 * Para visualizar el contexto actula de k8s:
 ```
 kubectl config current-context
@@ -153,4 +166,13 @@ kubectl config current-context
 * Para visualizar el contenido del contexto actual tenemos:
 ```
 kubectl config view
+```
+* Para conocer la lista de namespace:
+```
+kubectl get namespace
+```
+
+* Para acceder a recursos del cluster partiendo de un namespace:kubectl get pods 
+```
+kubectl get pods --namespace=<insert-namespace-name-here>
 ```
