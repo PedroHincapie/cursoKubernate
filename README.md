@@ -121,6 +121,13 @@ kubectl describe rs {nombre_rs}
 ```
 kubectl apply -f deployment.yaml
 ```
+* Para realizar un deployment de una version junto con la razon o la causa de cambio utilizamos el flag **--record**:
+
+```
+kubectl apply -f deployment.yaml --record
+```
++ **_Recordemos que en este punto anterior tenemos diferentes formas de depositar la causa y una es por medio de este flag, pero hiciste otras:_**
+
 * Para listar los pods con sus respectivos labels tenemos el comando:           
  ```
  kubectl get pods --show-labels
@@ -185,4 +192,55 @@ kubectl get pods --namespace=<insert-namespace-name-here>
 kubectl rollout undo deployment {front-deployment} --to-revision={2}
 ```
 *recordemos que la revisiones las obtenemos con el history.*
+
+* Para realizar el despliegue de un servicio en diferente ruta a la del deployment:
+
+```
+kubectl apply -f service.yaml -f ../deployment/deployment-version.yaml --record
+```
+##### Pero se hace la aclaracion dentro de un archivo yaml podemos declarar la creacion de varios objetos de k8s mediante el sepadaros de objetos *(---)*
+
+* Para explorar la descripción de un service creado:
+
+```
+kubectl get svc --show-labels
+```
+Este flag del final es para aplicar el filtro por los labels  o podemos aplicar:
+
+```
+kubectl get svc -l app=nginx-front
+```
+
+* Para describir el service e identificar que lo compone, tenemos:
+```
+kubectl describe svc my-service
+```
+
+* Para describir los endpoints asociados a nuestro service, tenemos:
+```
+kubectl get endpoints
+```
+
+### Como hoja de trucos tenemos esta [enlace](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+
+* Para listar los pod con mas detalle tenemos:
+```
+kubectl get pods -o wide 
+```
+
+* Para la creación de pod que pueda acceder a ellos de forma interactiva ademas de borrarse al salir de el:
+```
+kubectl run -ti --rm --generator=run-pod/v1 podtest --image=nginx:alpine -- sh
+```
+
+* Para conocer la descripción del node en que se esta corriendo nuestros servicios:
+
+```
+kubectl describe node 
+```
+
+
+
+
+
 
