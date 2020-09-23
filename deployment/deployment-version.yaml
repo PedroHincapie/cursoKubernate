@@ -18,5 +18,5 @@ spec:
         - name: cont-nginx
           image: nginx:alpine
           ports:
-            - containerPort: 80
+            - containerPort: 80 
        
