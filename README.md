@@ -38,7 +38,26 @@ Para el caso en que desde tu local quieras hacer una re-dirección a tu pod:
 kubectl port-forward <pod-name> 7000:<pod-port>
 ```
 
+* Para hacer un port-forward en un deployment:
+```
+kubectl port-forward deployment/back-deployment 7000:80 
+```
+
+* Para hacer un port-forward en un rs:
+```
+kubectl port-forward replicaset/back-deployment-647779c767 7000:80
+```
+
+* Para hacer un port-forward en un service:
+```
+kubectl port-forward service/servicio-node-port 7000:9000
+```
+
 Luego, solo vas a http://localhost:7000 y deberías ver tu pod!
+
+En el caso que necesitas mas detalle de como hacer otros tipos de comunicaciones tenemos este [link](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/)
+
+
 
 * Para acceder a los pod cuanto están ejecutándose:
  ```
@@ -239,8 +258,30 @@ kubectl run -ti --rm --generator=run-pod/v1 podtest --image=nginx:alpine -- sh
 kubectl describe node 
 ```
 
+* Para conocer el conjunto de namespace existentes en un cluster:
 
+```
+kubectl get namespaces
+```
 
+* Para conocer los pod existentes dentro de un namespaces:
 
+```
+kubectl get pods --namespace default
+```
+una forma abreviada es:
+```
+kubectl get pods -n default
+```
 
+* Para conocer todo lo que tenemos creado:
 
+```
+kubectl get all
+```
+
+* Para crear nuevos namespaces:
+
+```
+kubectl get all
+```
