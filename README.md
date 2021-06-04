@@ -61,7 +61,7 @@ En el caso que necesitas mas detalle de como hacer otros tipos de comunicaciones
 
 * Para acceder a los pod cuanto están ejecutándose:
  ```
- kubectl exec -ti {nombre del pod} -- sh
+ kubectl -n nombre_namespaces exec -it nombre_pods -- /bin/bash
  ```
 
  * Para acceder a los log de un pod: 
@@ -71,6 +71,11 @@ kubectl logs {nombre del pod}
 en el caso que necesitemos hacer seguimiento lo podemos hacer agregando -f al final
 ```
 kubectl logs {nombre del pod} -f 
+```
+
+en el caso que necesitemos hacer seguimiento lo podemos hacer agregando -f al final y al final de las lineas
+```
+kubectl -n nombre_namespaces logs -f nombre_contenedor --tail=50
 ```
 
 * Para obtener la lista de versiones de la api de K8s tenemos:
@@ -207,7 +212,7 @@ kubectl get namespace
 
 * Para acceder a recursos del cluster partiendo de un namespace:kubectl get pods 
 ```
-kubectl get pods --namespace=<insert-namespace-name-here>
+kubectl get pods  -n =<insert-namespace-name-here>
 ```
 
 * Para acceder a una lista extensa de comandos tenemos:
@@ -290,12 +295,18 @@ kubectl get all
 * Para crear nuevos namespaces:
 
 ```
- kubectl apply -f namespaces.yaml  
+ kubectl apply -f namespaces.yaml
+
+ kubectl create namespace pedro
 ```
- o
+
+* Para la eliminacion de un namespaces
 ```
- kubectl create namespace pedro 
+kubectl delete namespace nombre_namespaces
+
+kubectl delete -f namespaces.yaml
 ```
+
 * Para correr los pod, abrirlo de modo interactivo y eliminarlo apenas salgas de la consola:
 
 ```
