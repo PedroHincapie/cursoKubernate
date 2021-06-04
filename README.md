@@ -1,7 +1,6 @@
-# curso Kubernate K8s
-#### Este repositorio representa los estudios realizando del curso de K8S.
+# curso Kubernates - K8s
+##### Guiá practica de algunos de los comandos mas utilizados
 
-Dentro del presente encontraremos todos los comandos necesarios para la administración del mismo:
 * listar los pod existentes dentro del cluster
 ```
 kubectl get pods
