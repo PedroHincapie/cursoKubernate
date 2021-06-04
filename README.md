@@ -58,7 +58,25 @@ Luego, solo vas a http://localhost:7000 y deberías ver tu pod!
 En el caso que necesitas mas detalle de como hacer otros tipos de comunicaciones tenemos este [link](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/)
 
 
+* Para conocer los eventos reciente del cluster:
+```
+kubectl --kubeconfig ~/.kube/config_aks --context apolo-apicore-aks -n oapi-dev get events
+```
 
+Para la creacion de ConfigMap y Secretos:
+```
+kubectl --kubeconfig ~/.kube/config_aks --context apolo-apicore-aks -n oapi-dev create configmap nombre_config_map --from=config.properties
+
+kubectl --kubeconfig ~/.kube/config_aks --context apolo-apicore-aks -n oapi-dev create secret generic nombre_secret --from=secretos.properties
+
+```
+
+* Para la consulta de los ConfigMap y Secrets
+```
+kubectl --kubeconfig ~/.kube/config_aks --context apolo-apicore-aks -n oapi-dev get configmap
+
+kubectl --kubeconfig ~/.kube/config_aks --context apolo-apicore-aks -n oapi-dev get secrets
+```
 * Para acceder a los pod cuanto están ejecutándose:
  ```
  kubectl -n nombre_namespaces exec -it nombre_pods -- /bin/bash
