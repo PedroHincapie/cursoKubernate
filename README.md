@@ -193,13 +193,6 @@ kubectl config current-context
 ```
 kubectl config view
 ```
-
-* Para cambiarnos entre los diferentes contextos de nuestro archivo:
-```
-kubectl config use-context apicore-desa
-```
-
-
 * Para conocer la lista de namespace:
 ```
 kubectl get namespace
@@ -290,39 +283,5 @@ kubectl get all
 * Para crear nuevos namespaces:
 
 ```
- kubectl apply -f namespaces.yaml  
+kubectl get all
 ```
- o
-```
- kubectl create namespace pedro 
-```
-* Para correr los pod, abrirlo de modo interactivo y eliminarlo apenas salgas de la consola:
-
-```
-kubectl run -ti --rm --generator=run-pod/v1 podtest --image=nginx:alpine -- sh
-```
-
-* Para la creación de un pod dentro de un namespace propio:
-
-```
-kubectl run -ti --rm --generator=run-pod/v1 podtest --image=nginx:alpine --namespace development 
-```
-
-* Para la eliminación de un pod de un namaspace especifico:
-
-```
-kubectl delete pod nombre_pod -n nombre_namaspace 
-```
-
-* Como se construye el dns de un deployment generado apartir de una namespace:
-
-```
-nombre_servicio.nombre_namespace.svc.cluster.local
-```
-
-* Para scale de un deployment:
-
-```
-kubectl --kubeconfig ~/.kube/config_aks --context apolo-apicore-aks -n oapi-uat scale deployment/ms-validaciones-ci-facade --replicas=1
-```
-
